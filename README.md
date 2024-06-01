@@ -5,7 +5,7 @@
 Installation:
 
 ```bash
-cargo install --git https://github.com/pebaz/macos-natural-scrolling
+$ cargo install --git https://github.com/pebaz/macos-natural-scrolling
 ```
 
 For convenience, use this [Xbar]() script to put a clickable icon in the menu
@@ -23,3 +23,9 @@ echo "Toggle Natural Scrolling | shell='$(which macos-natural-scrolling)'"
 
 Put the Xbar script in `~/Library/Application\ Support/xbar/plugins` and don't
 forget to make it executable with `chmod +x toggle-natural-scrolling.sh`.
+
+For convenience, this crate adds a CLI command to do this automatically:
+
+```bash
+$ macos-natural-scrolling install
+```
