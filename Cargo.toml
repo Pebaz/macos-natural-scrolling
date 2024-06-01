@@ -1,0 +1,10 @@
+[package]
+name = "macos-natural-scrolling"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata]
+include = ["src/toggle-natural-scrolling.scpt"]
+
+[target.'cfg(target_os = "macos")'.dependencies]
+tempfile = "3.10.1"
