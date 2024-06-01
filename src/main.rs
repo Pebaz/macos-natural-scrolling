@@ -19,16 +19,30 @@ pub enum Error
 
 fn main() -> Result<(), Error>
 {
-    if env::args().skip(1).take(1).next() == Some("install".to_string())
+    if let Some(cmd) = env::args().skip(1).next()
     {
         let path = &std::path::Path::new("/Users")
             .join(env::var("USER").or(env::var("LOGNAME"))?)
             .join("Library/Application Support/xbar/plugins")
             .join("toggle-natural-scrolling.365d.sh");
-        fs::write(&path, include_str!("toggle-natural-scrolling.sh"))?;
-        make_executable(path)?;
-        println!("Installed script\nRefreshing plugins...");
-        return refresh_xbar_plugins().map_err(Into::into);
+
+        if cmd == "install"
+        {
+            fs::write(&path, include_str!("toggle-natural-scrolling.sh"))?;
+            make_executable(path)?;
+            println!("Installed script\nRefreshing plugins...");
+            return refresh_xbar_plugins().map_err(Into::into);
+        }
+        else if cmd == "uninstall"
+        {
+            fs::remove_file(path)?;
+            println!("Uninstalled script\nRefreshing plugins...");
+            return refresh_xbar_plugins().map_err(Into::into);
+        }
+        else
+        {
+            return Ok(println!("Usage: {} [install]", env!("CARGO_PKG_NAME")));
+        }
     }
 
     let mut file = NamedTempFile::new()?;
