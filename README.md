@@ -2,6 +2,8 @@
 
 > Toggles natural scrolling using `osascript` which means it is MacOS only ⚠️
 
+![Screenshot](Screenshot.png)
+
 Installation:
 
 ```bash
