@@ -24,7 +24,7 @@ fn main() -> Result<(), Error>
         let path = &std::path::Path::new("/Users")
             .join(env::var("USER").or(env::var("LOGNAME"))?)
             .join("Library/Application Support/xbar/plugins")
-            .join("toggle-natural-scrolling.365d.sh");
+            .join("toggle-natural-scrolling.1m.sh");
 
         if cmd == "install"
         {
